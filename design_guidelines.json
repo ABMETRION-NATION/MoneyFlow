@@ -1,0 +1,149 @@
+{
+  "app_name": "MoneyFlow",
+  "platform": "React Native Expo",
+  "theme_and_archetype": {
+    "theme": "Dark",
+    "archetype": "Archetype 4 (Swiss & High-Contrast) + Archetype 5 (Jewel & Luxury)",
+    "reasoning": "MoneyFlow needs to establish trust, precision, and a premium feel. We avoid generic 'fintech-bro' neon and 'childish UI'. Instead, we use deep charcoal, crisp 1px borders, and a stark, highly legible premium blue accent. This is an elite financial control center."
+  },
+  "colors": {
+    "background": {
+      "default": "#0A0C10",
+      "surface": "#13161C",
+      "surface_elevated": "#1C2028",
+      "overlay": "rgba(0,0,0,0.6)"
+    },
+    "brand": {
+      "accent_primary": "#0057FF",
+      "accent_primary_muted": "rgba(0, 87, 255, 0.15)",
+      "accent_secondary": "#FFFFFF"
+    },
+    "semantic": {
+      "income_success": "#10B981",
+      "expense_danger": "#F43F5E",
+      "warning": "#F59E0B"
+    },
+    "text": {
+      "primary": "#F8FAFC",
+      "secondary": "#94A3B8",
+      "tertiary": "#475569",
+      "inverse": "#0F1115"
+    },
+    "borders": {
+      "subtle": "#1E222A",
+      "focus": "#0057FF"
+    }
+  },
+  "typography": {
+    "font_families": {
+      "headings": "Manrope",
+      "body": "Manrope"
+    },
+    "scale": {
+      "h1_hero": { "fontSize": 40, "fontWeight": "800", "letterSpacing": -1.5, "lineHeight": 48 },
+      "h2_section": { "fontSize": 24, "fontWeight": "700", "letterSpacing": -0.5, "lineHeight": 32 },
+      "h3_card": { "fontSize": 18, "fontWeight": "600", "letterSpacing": -0.3, "lineHeight": 24 },
+      "body_lg": { "fontSize": 16, "fontWeight": "500", "letterSpacing": 0, "lineHeight": 24 },
+      "body_md": { "fontSize": 14, "fontWeight": "400", "letterSpacing": 0, "lineHeight": 20 },
+      "label_sm": { "fontSize": 12, "fontWeight": "600", "letterSpacing": 0.5, "textTransform": "uppercase" },
+      "balance_display": { "fontSize": 48, "fontWeight": "800", "letterSpacing": -2, "lineHeight": 56 }
+    }
+  },
+  "spacing_and_layout": {
+    "screen_padding": 24,
+    "card_padding": 20,
+    "item_gap": 16,
+    "section_gap": 32,
+    "border_radius": {
+      "sm": 8,
+      "md": 12,
+      "lg": 24,
+      "pill": 999
+    }
+  },
+  "components": {
+    "dashboard_balance_card": {
+      "background": "colors.background.surface",
+      "border": "1px solid colors.borders.subtle",
+      "borderRadius": "spacing_and_layout.border_radius.lg",
+      "padding": "spacing_and_layout.card_padding",
+      "layout": "Column, center-aligned if hero, left-aligned for data density",
+      "style_notes": "Do not use drop shadows. Rely on the 1px subtle border and contrasting background for elevation. Top right corner can have a subtle blur gradient of the accent color for a premium feel."
+    },
+    "transaction_row": {
+      "layout": "Flex row, space-between, align-center",
+      "padding": "16px 0",
+      "borderBottom": "1px solid colors.borders.subtle",
+      "icon_container": "48x48px, rounded-full, surface_elevated background, center icon",
+      "style_notes": "No cards per row. Flat list. Minimalist. Red/Green text only applied to the amount, not the whole row."
+    },
+    "fab_add_transaction": {
+      "position": "absolute, bottom 24px, right 24px",
+      "size": "64x64px",
+      "background": "colors.brand.accent_primary",
+      "borderRadius": "999px",
+      "icon": "Plus, color: white",
+      "style_notes": "High contrast, no heavy shadows. 4px solid border of colors.background.default to make it 'cut out' from the background."
+    },
+    "category_chips": {
+      "background": "colors.background.surface_elevated",
+      "padding": "8px 16px",
+      "borderRadius": "spacing_and_layout.border_radius.pill",
+      "active_state": "background: accent_primary, text: white"
+    },
+    "charts_section": {
+      "library": "react-native-gifted-charts",
+      "style": "Line chart for balance trends, Bar/Pie for categories",
+      "colors": {
+        "line": "colors.brand.accent_primary",
+        "gradient_fill": "accent_primary_muted to transparent",
+        "pie_palette": ["#0057FF", "#10B981", "#F59E0B", "#F43F5E", "#8B5CF6"]
+      },
+      "config": "Hide grid lines, hide Y-axis labels for cleaner look, use custom tooltips on press."
+    },
+    "bottom_tab_navigation": {
+      "background": "colors.background.default",
+      "borderTop": "1px solid colors.borders.subtle",
+      "active_icon": "colors.brand.accent_primary",
+      "inactive_icon": "colors.text.tertiary",
+      "style_notes": "Keep it strictly flat. No floating dock style. Traditional bottom tab for reliable UX."
+    },
+    "first_launch_modal": {
+      "background": "colors.background.surface",
+      "layout": "Bottom sheet or centered modal",
+      "content": "Currency Picker (INR default). Large tap targets."
+    },
+    "budget_progress_card": {
+      "background": "colors.background.surface",
+      "border": "1px solid colors.borders.subtle",
+      "borderRadius": "spacing_and_layout.border_radius.md",
+      "style_notes": "Use a horizontal bar chart/progress bar. Fill color shifts from green to orange to red as budget is consumed."
+    }
+  },
+  "iconography": {
+    "library": "@expo/vector-icons",
+    "family": "Feather",
+    "usage": "Use stroke-based icons (Feather). Consistent stroke width (2px). Icons inside transaction rows should map to categories (e.g., Coffee, Shopping Bag, Dollar Sign)."
+  },
+  "motion_and_interactions": {
+    "navigation": "Native stack transitions",
+    "modals": "Smooth slide-up bottom sheets for 'Add Transaction' and 'Currency Selector'",
+    "buttons": "Opacity reduction to 0.7 on active/press. Scale down slightly (0.95)."
+  },
+  "testing_and_accessibility": {
+    "attributes": "All interactive elements MUST include a `testID` (for React Native) AND `data-testid` (if standard React Web components are bridged). Use kebab-case, role-based naming (e.g., `data-testid=\"add-transaction-button\"`, `data-testid=\"currency-selector\"`).",
+    "contrast": "Ensure text meets APCA standards. Deep charcoal background with off-white text ensures excellent readability."
+  },
+  "instructions_to_main_agent": [
+    "Initialize React Native Expo app.",
+    "Install dependencies: @expo/vector-icons, react-native-gifted-charts, react-native-svg.",
+    "Do NOT use 'Inter' or 'Space Grotesk' for headings. Use 'Manrope' or high-quality System equivalents.",
+    "Build the dashboard using React Native View components with precise padding and borders as defined in spacing_and_layout.",
+    "For charts, configure react-native-gifted-charts strictly with the colors defined (accent_primary) and disable grid lines.",
+    "Implement the 'Add Transaction' FAB explicitly on the Dashboard and Transactions screens.",
+    "Ensure the first-launch currency picker sets a global state used across all currency displays.",
+    "Do NOT use generic shadows (elevation). Rely on surface color changes and 1px borders for depth.",
+    "Attach `data-testid` AND `testID` to all TextInputs, Buttons, and TouchableOpacities to ensure robust automated testing.",
+    "Create Tab navigation for Dashboard, Transactions, Insights, Budget, Settings."
+  ]
+}
